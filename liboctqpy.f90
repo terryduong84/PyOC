@@ -4,7 +4,7 @@
 ! 
 ! This function works with OC3B
 !
-integer function pytq(call_func,int_var,double_var,char_var,int_out,double_out,char_out)
+real function pytq(call_func,int_var,double_var,char_var,int_out,double_out,char_out)
 
   use liboctq
 
@@ -257,11 +257,14 @@ integer function pytq(call_func,int_var,double_var,char_var,int_out,double_out,c
 
 900 continue
   write(*,*)'Error code ',gx%bmperr,' for call ',call_func
+  write(*,*)'Error must be handled after call to tqce() in user python code'
   ierr=gx%bmperr
-  stop
+  !stop
+  pytq=real(ierr)
+  return
 
 1000 continue
-  pytq=ierr
+  pytq=real(ierr)
   return
 end function pytq
 
