@@ -98,4 +98,4 @@ cp libocpy.py lib
 
 echo "Check out example HEA_FCC_screen.py (notice how error returned from tqce() handled)!!!"
 mv SAF.TDB lib
-mv HEA_FCC_screen.py lib
+mv HEA_* lib
