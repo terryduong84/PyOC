@@ -2,6 +2,16 @@ import pandas as pd
 import numpy as np
 from libocpy import *
 import random
+import time
+
+print('Hello there!')
+print('This example screens stable FCC-CrFeMnNi alloys using SSOL2 (saf2507.tdb)')
+print('One can find how error returned from tqce() handled. The error most of')
+print('the time is 4204, i.e. Too many iteractions. Slight change of T and/or X')
+print('can fix this error. *** Mind: error (> 0) must always be handled by user.')
+print('OpenCALPHAD (as of version 5) does not handle these errors effectively!!!')
+
+time.sleep(60)
 
 chemsys = pd.read_excel('HEA_alloy.xlsx',sheetname='Sheet1')
 element_list = []
@@ -41,5 +51,4 @@ for it in range(len(T)):
 
 for i in range(len(T)):
     chemsys.insert(4+i,str(T[i])+' K', stable_alloys[i])
-    #chemsys.to_excel('HEA_alloys_'+str(round(T[i]))+'.xlsx',sheet_name='Sheet1')
 chemsys.to_excel('HEA_alloys_'+str(np_crit)+'.xlsx',sheet_name='Sheet1')
