@@ -171,7 +171,11 @@ def tqsetcs(conditions):
 
 def tqce():
     dum, int_out, doub_out, char_out = ptq('tqce', 0, 0., ' ')
-    return None
+    error_code = dum
+    # Note: error must be handled by python code that calls tqce()
+    #       or else subsequent calls to other functions will rise
+    #       errors! error = 0: no errors.
+    return error_code
 
 # ============= retrive the data
 
