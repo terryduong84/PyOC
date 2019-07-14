@@ -7,11 +7,11 @@ import matplotlib.pyplot as plt
 
 
 
-chemsys = pd.read_excel('HEA_Mn_alloys_0.99.xlsx',sheet_name='Sheet1')
+chemsys = pd.read_excel('HEA_alloys_0.90.xlsx',sheet_name='Sheet1')
 element_list = ['Cr','Fe','Mn','Ni'] # [O,A,B,C]
 
 tet_coords = np.array([])
-T = 873.0
+T = 1073.0
 for i, stable_alloy in enumerate(chemsys[str(T) + ' K']):
     if stable_alloy is 'Y':
         if tet_coords.any():

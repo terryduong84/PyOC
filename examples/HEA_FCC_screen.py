@@ -3,12 +3,24 @@ import numpy as np
 from libocpy import *
 import random
 
+"""
+    Description:
+    
+        - This example demonstrates how one can work around error
+          (most of time the error code 2404: "Too many iterations")
+          from tqce()
+
+        - It screens for compositions exhibiting more than 90% mole
+          fraction of FCC phase     
+"""
+
+
 chemsys = pd.read_excel('HEA_alloy.xlsx',sheet_name='Sheet1')
 element_list = []
 for key in list(chemsys.keys()):
     element_list.append(key.split()[0].upper())
 
-np_crit = 0.10
+np_crit = 0.90
 T = np.linspace(573.0,2273.0,18)
 stable_alloys = []
 for it in range(len(T)):
