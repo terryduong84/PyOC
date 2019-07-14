@@ -188,15 +188,17 @@ def plot_quaternary_at_one_temperature(composition_as_dict, temperature):
 
 def compute_TX_equilibrium_infinite(tdb_filename, element_list, temperature_T, composition_X_as_dict):
     error = 1.0 
+    fix_factor = 0.0
     while error > 0.0:
         tqini()
         tqrpfil(tdb_filename, element_list)
         tqsetc('N', 0, 1.0)
         tqsetc('P', 0, 1.e5)
-        tqsetc('T', 0, temperature_T + float(random.randint(0,100))/10000.)
+        tqsetc('T', 0, temperature_T + fix_factor * float(random.randint(0,100))/10000.)
         for key in list(composition_X_as_list.keys()[1:]):
-            tqsetc('X', key.split()[0], composition_X_as_dict[key] + float(random.randint(0,100))/1000000.)
+            tqsetc('X', key.split()[0], composition_X_as_dict[key] + fix_factor * float(random.randint(0,100))/1000000.)
         error = tqce()
+        if error > 0.0:
+            fix_factor = fix_factor + 0.1
         tqrseterr()
-
 
