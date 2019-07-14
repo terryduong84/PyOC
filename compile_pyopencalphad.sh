@@ -102,3 +102,4 @@ mkdir example
 cp lib/* example
 mv SAF.TDB example
 mv HEA_* example
+mv plot_quaternary.py example
