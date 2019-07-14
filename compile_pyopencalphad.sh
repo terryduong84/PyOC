@@ -99,3 +99,5 @@ echo ""
 echo "Check out example HEA_FCC_screen.py (notice how error returned from tqce() handled)!!!"
 echo ""
 cp lib/* examples
+
+rm *.sh *.a *.F90 *.f90 *.mod *.o
