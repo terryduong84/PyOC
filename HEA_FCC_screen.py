@@ -37,7 +37,8 @@ for it in range(len(T)):
                 print('set X('+key.split()[0]+'='+str(float(chemsys[key][ic])/100.0)+')')
                 tqsetc('X',key.split()[0],float(chemsys[key][ic])/100.0 + attempt_to_fix_error*float(random.randint(0,10))/1000000.)
             error = tqce()
-            attempt_to_fix_error = attempt_to_fix_error + 1
+            if error > 0:
+                attempt_to_fix_error = attempt_to_fix_error + 1
             tqrseterr()
             if attempt_to_fix_error >= 10:
                 print('Error in calling tqce!')
