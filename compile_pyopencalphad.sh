@@ -95,6 +95,7 @@ f2py -c --fcompiler=gnu95 --f90flags=-fPIC ftinyopen.o tinyopen.o tinyfiledialog
 mkdir lib
 mv *.so lib/liboctqpy.so
 mv libocpy.py lib
+mv pyoc_utils.py lib
 
 echo "Check out example HEA_FCC_screen.py (notice how error returned from tqce() handled)!!!"
 mkdir example
