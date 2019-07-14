@@ -16,11 +16,10 @@ It is updated to work with oc5 and will require bash (native to linux) to run
 
 To install:
 
-1) download the scripts and place them in some folder inside oc folder
 
-2) go to the folder where the scripts are
+1) go to the PyOC folder
 
-3) chmod +x compile_pyopencalphad.sh
+2) chmod +x compile_pyopencalphad.sh
 
 3) ./compile_pyopencalphad.sh
 
