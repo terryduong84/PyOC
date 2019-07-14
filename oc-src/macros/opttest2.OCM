@@ -1,0 +1,61 @@
+@$
+new Y
+@$ ================================================================
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$ opttest2.OCM
+@$ Assessment example for the Cu-Mg system in steps
+@$ ================================================================
+@$ There are memory leaks during STEP/MAP
+@$ You may run of of allocatable memory if you run all tests
+@$ ================================================================
+@&
+
+set echo
+
+mac ./opttest2A
+
+@&
+
+mac ./opttest2B
+
+@&
+
+mac ./opttest2C
+
+@&
+
+mac ./opttest2D
+
+@&
+
+mac ./opttest2E
+
+@&
+
+mac ./opttest2F
+
+@&
+
+mac ./opttest2G
+
+set inter
+
+

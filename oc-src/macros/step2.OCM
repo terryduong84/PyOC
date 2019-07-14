@@ -1,0 +1,94 @@
+new Y
+@$ ===================================================================
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$ step2.COM
+@$ Calculating G curves for the phases in Ag-Cu
+@$ ===================================================================
+@&
+
+set echo
+
+r t ./agcu
+
+
+@&
+@$ --------------------------------------------------------
+
+set cond t=1000 p=1e5 n=1 x(cu)=.2
+
+c e
+
+l r 1
+
+@&
+@$ --------------------------------------------------------
+
+set ref ag fcc,,,,,
+set ref cu fcc,,,,,,
+
+set ax 1 x(cu) 0 1 ,,,
+
+l ax
+
+l sh
+
+
+@&
+@$ --------------------------------------------------------
+
+
+step 
+sep
+
+@&
+@$ --------------------------------------------------------
+@$ Plot of the Gibbe energy curves at 1000 K
+
+
+plot
+x(cu)
+G(*)
+title step2 fig 1
+render
+
+
+@&
+@$ --------------------------------------------------------
+@$ Plot of activity curves for components in each phase at 1000 K
+
+
+plot
+x(cu)
+ac(*)
+title step2 fig 2
+render
+
+
+@&
+@$ plot the stability function, the lowest eigenvalue 
+
+plot
+x(cu)
+Q(*)
+title step2 fig 3
+render
+
+
+set inter

@@ -1,0 +1,53 @@
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                                  General Info.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+This build is based on pyopencalphad: https://github.com/dpttw/pyopencalphad
+
+It is updated to work with oc5 and will require bash (native to linux) to run
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                                  Installation
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+To install:
+
+1) download the scripts and place them in some folder inside oc folder
+
+2) go to the folder where the scripts are
+
+3) chmod +x compile_pyopencalphad.sh
+
+3) ./compile_pyopencalphad.sh
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                               Some things to know
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Among its steps, compile_pyopencalphad.sh will modify liboctq.F90.
+
+Specifically: 
+
+subroutine tqgcom(n,compnames,ceq):
+
+- Change: character*24, dimension(*) :: compnames ! EXIT: names of components
+
+- To....: character*2, dimension(*) :: compnames ! EXIT: names of components
+
+- Why...: This makes 'character(len=2):: compnamesi' in 'tqgcom' the same length
+          as 'character elname*2' in 'tqrfil' and 'character selel(*)*2' in 'tqrpfil'
+          for compatibility when passing these variables to 'get_element_data'
+
+- Note..: 
+
+          a) one can of course change 'character selel(*)*2' in 'tqrpfil' to
+             'character selel(*)*24' and 'character elname*2' in 'tqrfil' to 'character elname*24'
+
+          b) make sure 'character(Len=2):: elenames(maxc)' in liqoctqpy.f90
+             (wrapper of liqoctq.F90) is also compatible in character length

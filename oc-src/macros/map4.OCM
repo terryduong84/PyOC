@@ -1,0 +1,169 @@
+new Y
+@$ ===============================================================
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$
+@$ map4.OCM
+@$ Calculate the phase diagram for O-U
+@$ ===============================================================
+@&
+
+set echo
+
+r t ./OU
+
+
+set c t=3200 p=1e5 n=1 x(o)=.3
+
+c e
+
+l r 2
+
+@&
+
+set ax 1 x(o) 0 1 0.005
+
+set ax 2 t 500 3500 20
+
+map
+
+plot
+x(*,o)
+T
+title map 4 fig 1
+render
+
+
+@&
+plot
+x(*,o)
+T
+title map4 fig 2
+position bottom left
+
+text 0.59 3300
+.8
+0
+y
+
+text n
+0.9 3300 .8 0 y
+
+text n
+0.66 2600 .8 90 y
+
+render
+
+@$ To add a label at 700 K and high oxygen I need to calculate
+@$ that equilibria explicitly first!!
+set c t=700 x(o)=.8
+c e
+
+l,,,,
+
+@&
+plot
+
+
+text n
+0.8 700 .8 0 y
+
+title map4 fig 2B
+
+
+
+
+@&
+
+plot
+
+
+title map4 fig 3
+scale x
+N 
+.58 
+.78
+render
+
+@&
+plot
+
+
+title map4 fig 4
+scale y
+N
+2500
+3200
+
+
+
+@&
+@$-------------------------------------------------------------
+@$ As a final touch calculate the congruent melting of UO2
+@$ First calculate an equilibrium in the liquid (or solid) above it
+
+l c
+
+set c x(o)=.66 t=3300
+
+c e
+
+l,,,,,
+
+@&
+@$----------------------------------------------------------
+@$ Then set C1_MO2 as fix with zero amount
+
+set stat ph c1_mo2=f 0
+set c t=none
+l c
+
+c e
+
+l,,,,,
+
+@&
+@$---------------------------------------------------------
+@$ Finally replace the condition of U with the condition
+@$ that it should be the same in liquid and C1
+@$ IT IS IMPORTANT TO USE THE COMPOSITION SETS THAT ARE STABLE ABOVE
+
+set c x(ionic,u)-x(c1_mo2,u)=0
+set c x(o)=none
+l c
+
+c e
+
+l,,,,
+
+@$ Voila! 
+@$ T=3139 K and x(o)=.6638, slightly on the U rich side.
+@&
+
+plot
+
+
+scale x
+N
+.64 .68
+scale y n 3100 3150
+
+
+
+set interactive
+
